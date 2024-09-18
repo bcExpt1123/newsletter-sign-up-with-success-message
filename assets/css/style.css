@@ -115,9 +115,9 @@ li {
 }
 
 /* sign-up card */
-.sign-up-img {
+/* .sign-up-img {
   width: 100%;
-}
+} */
 
 .sign-up-text {
   padding: 3rem 2rem;
@@ -128,16 +128,15 @@ li {
 }
 
 .sign-up-list {
-  padding: 0 3rem;
-  list-style-image: url("../images/icon-list.svg");
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.sign-up-list li {
-  padding-left: 1rem;
+.sign-up-list img {
+  margin-bottom: -3px;
+  margin-right: 10px;
+  display: inline-block;
 }
 
 .sign-up-form {

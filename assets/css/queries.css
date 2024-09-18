@@ -1,7 +1,18 @@
+@media only screen and (min-width: 20em) {
+  .sign-up-img {
+    width: 100%;
+  }
+}
+
+
+
 /**********************/
 /*     over 480px     */
 /**********************/
 @media only screen and (min-width: 30em) {
+  .sign-up-img {
+    width: 100%;
+  }
 }
 
 /**********************/
@@ -12,6 +23,9 @@
     /* border-radius: 0 0 3rem 3rem; */
     min-height: calc(100vh - 5rem);
     /* height: 90vh; */
+  }
+  .sign-up-img {
+    width: 100%;
   }
 }
 
@@ -45,8 +59,8 @@
   /* sign-up card */
   .sign-up-card {
     max-width: 100rem;
-    padding: 3rem;
-
+    padding: 2.4rem;
+    padding-left: 0;
     display: grid;
     grid-template-columns: 4fr 3fr;
   }
@@ -66,9 +80,10 @@
 
   /* success card */
   .success-card {
-    max-width: 55rem;
-    padding: 7rem 9rem;
-    gap: 4rem;
+    max-width: 50rem;
+    max-height: 50rem;
+    padding: 5rem 5rem;
+    /* gap: 4rem; */
   }
 }
 
