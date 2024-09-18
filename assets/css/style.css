@@ -1,273 +1,245 @@
-/* ------- CSS Reset ----------- */
+/* Fonts */
+/* 400 */
+@font-face {
+  font-family: robotoCustom;
+  src: url(../fonts/Roboto-Regular.ttf);
+  font-weight: 400;
+}
 
-*,
-*::before,
-*::after {
+/* 700 */
+@font-face {
+  font-family: robotoCustom;
+  src: url(../fonts/Roboto-Bold.ttf);
+  font-weight: 700;
+}
+
+/* Colors */
+:root {
+  /* PRIMARY */
+  --tomato: hsl(4, 100%, 67%);
+  --tomato-light: hsl(4, 100%, 95%);
+  /* NEUTRAL */
+  --dark-slate-grey: hsl(234, 29%, 20%);
+  --charcoal-grey: hsl(235, 18%, 26%);
+  --grey: hsl(231, 7%, 60%);
+  --white: hsl(0, 0%, 100%);
+  /* GRADIENT */
+  --gradient-pink: #ff3e83;
+  --gradient-orange: #fd634a;
+  --gradient-shadow: #ff725855;
+}
+
+/* General Styling */
+* {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+html {
+  font-size: 62.5%;
 }
 
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  font-family: robotoCustom, sans-serif;
+  line-height: 1;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--charcoal-grey);
+  min-width: 29rem;
 }
 
-s img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-input,
-button {
-  font: inherit;
+.hidden {
+  display: none !important;
+}
+
+/* Main */
+main {
+  min-height: calc(100vh - 5rem);
+}
+
+.card {
+  background-color: var(--white);
+  color: var(--dark-slate-grey);
+  box-shadow: 0 0 7rem 1rem #00000055;
+  width: 100%;
+  max-width: 48rem;
+  min-height: calc(100vh - 5rem);
+  margin: auto;
+}
+
+h2 {
+  font-size: 4rem;
 }
 
 p,
-h1,
-h2 {
-  overflow-wrap: break-word;
+li {
+  line-height: 1.5;
 }
 
-:root {
-  --clr-primary-tomato: hsl(4, 100%, 67%);
-  --clr-Dark-Slate-Grey: hsl(234, 29%, 20%);
-  --clr-Charcoal-Grey: hsl(235, 18%, 26%);
-  --clr-Grey: hsl(231, 7%, 60%);
-  --clr-background: hsl(0, 0%, 100%);
-
-  --font: 1rem;
-
-  --fw-rgl: 400;
-  --fw-bold: 700;
-
-  --ff: "Roboto", sans-serif;
+.btn {
+  cursor: pointer;
+  padding: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--dark-slate-grey);
+  border-radius: 0.7rem;
+  border: none;
+  transition: transform 0.4s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out;
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-  margin-top: 2rem;
-  color: var(--clr-background);
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url(../fonts/Roboto-Regular.ttf) format(truetype);
-  font-weight: var(--fw-rgl);
-  font-style: normal;
+.btn:hover {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-pink),
+    var(--gradient-orange)
+  );
+  box-shadow: 0rem 2rem 3rem 2px var(--gradient-shadow);
 }
 
-body {
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.btn:focus {
+  outline: 0.2rem dotted var(--dark-slate-grey);
+}
+
+/* sign-up card */
+.sign-up-img {
+  width: 100%;
+}
+
+.sign-up-text {
+  padding: 3rem 2rem;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  background-color: var(--clr-Charcoal-Grey);
-  font-weight: var(--fw-rgl);
-  font-size: var(--font);
-  font-family: var(--ff);
+  gap: 2.5rem;
 }
 
-.signup-form {
-  background-color: var(--clr-background);
-  max-width: 375px;
-  color: var(--clr-Dark-Slate-Grey);
-}
+.sign-up-list {
+  padding: 0 3rem;
+  list-style-image: url("../images/icon-list.svg");
 
-.signup-form.success {
-  display: initial;
-  padding: 3.5rem;
-}
-
-.content {
-  padding: 1.5rem;
-}
-
-.signup-form h1 {
-  font-weight: var(--fw-bold);
-  font-size: 2.5rem;
-}
-
-.signup-form p {
-  margin: 1rem 0;
-}
-
-ul li {
-  margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
 }
 
-ul li:not(:last-child) {
-  align-items: start;
+.sign-up-list li {
+  padding-left: 1rem;
 }
 
-.form-item {
+.sign-up-form {
+  position: relative;
+  margin-top: 1rem;
+
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
-.form-item label {
-  font-size: 12px;
-  font-weight: var(--fw-bold);
-  display: flex;
-  justify-content: space-between;
+.sign-up-form label {
+  font-weight: 700;
 }
 
-.form-item label .error-email {
-  color: var(--clr-primary-tomato);
+.sign-up-form input {
+  padding: 1.5rem 2rem;
+  border: 0.1rem solid var(--grey);
+  border-radius: 0.7rem;
+}
+
+.sign-up-form input:focus {
+  /* outline: 0.2rem solid var(--dark-slate-grey); */
+}
+
+.sign-up-form .error-message {
+  color: var(--tomato);
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+
   display: none;
 }
 
-.form-item label .error-email.active {
+.sign-up-form.error input {
+  background-color: var(--tomato-light);
+  border-color: var(--tomato);
+  color: var(--tomato);
+}
+
+.sign-up-form.error .error-message {
   display: block;
 }
 
-.form-item input,
-.form-item button {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+.submit-btn {
+  margin-top: 1rem;
 }
 
-.form-item input {
-  border: 1px solid var(--clr-Grey);
-}
-
-.form-item input.active {
-  background-color: rgba(255, 98, 87, 0.2);
-  border: 1px solid var(--clr-primary-tomato);
-}
-
-.btn1 {
-  background-color: var(--clr-Dark-Slate-Grey);
-  color: var(--clr-background);
-  font-weight: var(--fw-bold);
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-.btn1:hover,
-.btn2:hover {
-  background: linear-gradient(
-    127deg,
-    rgba(255, 63, 124, 1) 40%,
-    rgb(229, 40, 15) 70%
-  );
-}
-
-/* Sucess section */
-
-.successmsg {
-  max-width: 375px;
-  background-color: var(--clr-background);
+/* success card */
+.success-card {
   padding: 2rem;
-  color: var(--clr-Dark-Slate-Grey);
-  display: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
 }
 
-.successmsg.active {
-  display: block;
+.success-card img {
+  margin-top: auto;
 }
 
-.successmsg img {
-  margin-top: 6rem;
-  margin-bottom: 2rem;
+.submitted-email {
+  font-weight: 700;
 }
 
-.successmsg h1 {
-  margin-bottom: 1rem;
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: var(--fw-bold);
+.dismiss-btn {
+  align-self: stretch;
+  margin-top: auto;
 }
 
-.successmsg p {
-  margin-bottom: 15rem;
+/* Footer */
+footer {
+  height: 5rem;
+  min-width: 17rem;
+  color: var(--white);
+  background-color: transparent;
+  font-size: 1.3rem;
+  line-height: 1.3;
+
+  gap: 1rem;
 }
 
-.bold {
-  font-weight: var(--fw-bold);
+.attribution {
+  font-size: 1.1rem;
 }
 
-.btn2 {
-  width: 100%;
-  background-color: var(--clr-Dark-Slate-Grey);
-  color: var(--clr-background);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  font-weight: var(--fw-bold);
-  cursor: pointer;
-  outline: none;
-  border: none;
+.attribution a:link,
+.attribution a:visited {
+  color: var(--white);
+  padding: 0.1rem;
+  text-decoration: none;
 }
 
-@media only screen and (min-width: 769px) {
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.attribution a:hover,
+.attribution a:active {
+  color: var(--tomato);
+  border-bottom: 0.1rem solid var(--tomato);
+}
 
-  .signup-form {
-    max-width: 900px;
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 1rem;
-    border-radius: 1.5rem;
-  }
-
-  .signup-form.success {
-    display: block;
-    padding: initial;
-  }
-
-  .content {
-    margin: 2rem 0.5rem;
-  }
-
-  .content h1 {
-    font-size: 3.5rem;
-  }
-
-  /* success screen */
-
-  .successmsg {
-    max-width: 400px;
-    display: none;
-    border-radius: 1.5rem;
-  }
-
-  .successmsg.active {
-    max-width: 400px;
-    display: block;
-  }
-
-  .successmsg img {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .successmsg h1 {
-    margin-bottom: 1rem;
-  }
-
-  .successmsg p {
-    margin-bottom: 1rem;
-  }
+.attribution a:focus {
+  outline: 0.2rem dotted var(--tomato);
 }

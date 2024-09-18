@@ -1,59 +1,47 @@
-const signupform = document.getElementById("signup-form");
-const leftP = document.getElementById("left");
-const rightP = document.getElementById("right");
+"use strict";
 
-const useremail = document.getElementById("user-email");
-const erroremail = document.getElementById("error-email");
-const emailinput = document.getElementById("email");
-const submitbtn = document.getElementById("btn1");
+// Elements
+const signUpCardEl = document.querySelector(".sign-up-card");
+const successCardEl = document.querySelector(".success-card");
+const signUpFormEl = document.querySelector(".sign-up-form");
+const emailIn = document.getElementById("email");
+const submitBtn = document.querySelector(".submit-btn");
+const dismissBtn = document.querySelector(".dismiss-btn");
+const submittedEmailEl = document.querySelector(".submitted-email");
 
-const successmsg = document.getElementById("successmsg");
-const dismissbtn = document.getElementById("btn2");
+// Event-listeners
+submitBtn.addEventListener("click", submitEmail);
+dismissBtn.addEventListener("click", toggleCards);
 
-const form = document.getElementById("signup-form");
-
-function formSuccess() {
-    successmsg.classList.add("active");
-    signupform.classList.add("success");
-    leftP.style.display = "none";
-    rightP.style.display = "none";
+// Functions
+// toggle cards
+function toggleCards() {
+  signUpCardEl.classList.toggle("hidden");
+  successCardEl.classList.toggle("hidden");
 }
 
+// email validation
 function validateEmail(email) {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-};
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+}
 
-form.addEventListener("submit", (e) => {
-// submitbtn.addEventListener("click", (e) => {
+// submit email form
+function submitEmail(e) {
+  e.preventDefault();
 
-    e.preventDefault();
-    const email = emailinput.value;
-    console.log(email);
-    console.log("hi");
-
-    if (validateEmail(email)) {
-        formSuccess()
-        useremail.innerHTML = email;
-        emailinput.value = "";
-
-        erroremail.classList.remove("active");
-        emailinput.classList.remove("active");
-
-
-    } else {
-        erroremail.classList.add("active");
-        emailinput.classList.add("active");
-        emailinput.style.color = "hsl(4, 100%, 67%)";
-    }
-})
-
-dismissbtn.addEventListener("click", (e) => {
-    leftP.style.display = "block";
-    rightP.style.display = "block";
-    signupform.classList.remove("success");
-    successmsg.classList.remove("active");
-})
+  // valid email
+  if (validateEmail(emailIn.value)) {
+    submittedEmailEl.innerText = emailIn.value;
+    toggleCards();
+    emailIn.value = "";
+    signUpFormEl.classList.remove("error");
+  }
+  // invalid email
+  else {
+    signUpFormEl.classList.add("error");
+  }
+}
